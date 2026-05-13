@@ -4,8 +4,8 @@ import jwt from 'jsonwebtoken';
 export const login = async (item) => {
     const { email, oid } = item;
     const email_new = email.split('@')[0];
-    const select = 'select * from employees inner join departments on employees.department_id = departments.department_id where employee_email like ?';
-    const [result_select] = await db.connectdatabase.query(select, [`${email_new}%`]);
+    const select = 'select * from employees inner join departments on employees.department_id = departments.department_id where employee_email like ? and employee_status != ?';
+    const [result_select] = await db.connectdatabase.query(select, [`${email_new}%`, 'resign']);
     if (result_select.length === 1) {
         if (result_select[0].employee_oid === null || result_select[0].employee_oid === '') {
             result_select[0].employee_oid = oid;
