@@ -15,4 +15,4 @@ const testDB = async () => {
 
 testDB();
 
-export default { connectdatabase, connectdatabase_department };
+export default { connectdatabase };

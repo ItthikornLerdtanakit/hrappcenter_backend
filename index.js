@@ -11,6 +11,7 @@ const ipaddress = process.env.IPADDRESS;
 const app = express();
 const port = 5500;
 
+app.disable('x-powered-by');
 app.set('trust proxy', 'loopback');
 
 // -------------------------
